@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layers.</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header"></header>
+        <main class="main">
+
+
+
+        </main>
+        <footer class="footer"></footer>
+    </div>
+
+    <style>
+        /* Приоритентность можно определять в одном месте, а по дефолту чем ниже слой тем он более спецефичен: */
+        @layer components, variations;
+
+        /* Слой где разместим стандартные стили: */
+        @layer components {
+            .button {
+                color: fff;
+                background-color: tomato;
+            }
+        }
+        
+        /* Слой для модификаций: */
+        @layer variations {
+            .button--ghost {
+                color: fff;
+                background-color: tomato;
+            }
+        }
+
+    </style>
+</body>
+
+</html>
