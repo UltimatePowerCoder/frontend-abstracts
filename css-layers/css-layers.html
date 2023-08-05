@@ -39,6 +39,25 @@
             }
         }
 
+        /* Использование слоев для создания тем. */
+        @layer main, elements, themes;
+
+        @layer themes {
+            @layer custom, default;
+
+            @layer deafult {
+                :root {
+                    --color-primary: tomato;
+                }
+            }
+
+            @layer custom {
+                :root {
+                    --color-primary: aqua;
+                }
+            }
+        }
+
     </style>
 </body>
 
