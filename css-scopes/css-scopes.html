@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>CSS - Scopes.</title>
+</head>
+
+<body>
+
+    <!-- На 08.2023 работает только в *хроме и то не в основной версии. -->
+
+    <!-- Пример - разметка в которой есть элементы с одинаковыми классами
+    для которых нужно применить разные стили. -->
+
+    <h1 class="title">Заголовок</h1>
+
+    <div class="block-1">
+        <h2 class="title">Я заголовок блока - 1</h2>
+    </div>
+
+    <div class="block-2">
+        <h2 class="title">Я заголовок блока - 2</h2>
+    </div>
+
+    <style>
+        .title {
+            font-weight: bold;
+            color: blueviolet;
+        }
+
+
+        /* Теперь можно для каждого блока сделать свой scope и задать для него стили. */
+        @scope (.block-1) {
+            .title {
+                font-size: 20px;
+                color: tomato;
+            }
+        }
+
+        @scope (.block-2) {
+            .title {
+                font-size: 25px;
+                color: aqua;
+            }
+        }
+
+        /* А еще можно устанавливать селекторы на начало и конец скоупа:  */
+        
+        @scope (.component) to (.content) {
+            p {
+                color: red;
+            }
+        }
+    </style>
+
+</body>
+
+</html>
