@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css-grid.css">
+    <title>Lorem, ipsum.</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header"></header>
+        <main class="main">
+
+            <h2>Пример - 1</h2>
+            <div class="box">
+                <div class="item item-1">Lorem.</div>
+                <div class="item">Lorem, ipsum.</div>
+                <div class="item">Lorem, ipsum dolor.</div>
+                <div class="item">Lorem ipsum dolor sit amet.</div>
+                <div class="item">Lorem.</div>
+                <div class="item">Lorem, ipsum.</div>
+                <div class="item">Lorem, ipsum dolor.</div>
+                <div class="item">Lorem ipsum dolor sit amet.</div>
+                <div class="item">Lorem.</div>
+                <div class="item">Lorem, ipsum.</div>
+                <div class="item">Lorem, ipsum dolor.</div>
+                <div class="item">Lorem ipsum dolor sit amet.</div>
+            </div>
+
+            <br>
+            <hr>
+            <h2>Пример - 2</h2>
+            <div class="box-2">
+                <div class="items item-1">Lorem.</div>
+                <div class="items">Lorem, ipsum.</div>
+                <div class="items">Lorem, ipsum dolor.</div>
+                <div class="items">Lorem ipsum dolor sit amet.</div>
+                <div class="items">Lorem.</div>
+                <div class="items">Lorem, ipsum.</div>
+                <div class="items">Lorem, ipsum dolor.</div>
+                <div class="items">Lorem ipsum dolor sit amet.</div>
+                <div class="items">Lorem.</div>
+                <div class="items">Lorem, ipsum.</div>
+                <div class="items">Lorem, ipsum dolor.</div>
+                <div class="items">Lorem ipsum dolor sit amet.</div>
+            </div>
+
+            <br>
+            <hr>
+            <h2>Пример - 3</h2>
+            <div class="wrapper">
+                <header class="header element">Header</header>
+                <main class="main element">Main</main>
+                <aside class="aside element">Aside</aside>
+                <footer class="footer element">Footer</footer>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+    </div>
+
+
+    <style>
+        body {
+            padding: 50px 100px;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .item {
+            border: 1px solid black;
+            border-bottom: none;
+            background-color: darkgoldenrod;
+            color: aliceblue;
+            padding: 15px;
+        }
+
+        .items {
+            border: 1px solid black;
+            border-bottom: none;
+            background-color: darkslateblue;
+            color: aliceblue;
+            padding: 15px;
+        }
+
+        /* Значение display-grid мы задаем для контейнера внутри которого будем позиционировать элементы. */
+        .box {
+            display: grid;
+
+            /* Ширина колонок: */
+            grid-template-columns: repeat(3, 1fr);
+
+            /* Ширина строк: */
+            grid-template-rows: 100px 200px 200px;
+
+            /* 
+            Для отступов между грид элементами используем:
+            row-gap: ;
+            column-gap: ;
+            gap: row-gap/column-gap
+            */
+
+            gap: 15px 15px;
+
+            /* Если нужно чтобы один их грид элементов занимал несколько фракций: */
+
+            .item-1 {
+                /* Значение span увеличивает элемент на нужное кол-во частей относительного того места в котором он стоял. */
+                /* 
+                grid-column-start: span 2;
+                grid-row-start: span 2;
+                */
+
+                /* Верхняя запись аналогична этой: */
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 3;
+                /* С помощью этих свойств можно поставить блок в любое место относительно грид сетки */
+
+                /* Можно сократить написание свойством grid-column и grid-row */
+
+                /* grid-column: 1/3;
+                grid-row: 1/3; */
+            }
+
+        }
+
+        .box-2 {
+            display: grid;
+
+            /* grid-template: repeat(4, 150px) / repeat(4, 1fr) ; */
+
+            /*
+            Есть сокращение:
+            grid-template: первое значение grid-template-columns / второе значение grid-template-rows;
+            */
+
+            /* Также можно использовать названия написав их в [квадратных скобках] */
+            grid-template-columns: [one] 400px [dva] 200px [tres] 300px [item4];
+            grid-template-rows: 100px 200px 150px;
+            gap: 20px;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "main main aside"
+                "footer footer footer";
+
+
+            /* Пустая ячейка делается с помощью точки .
+            "footer . footer"; */
+        }
+
+        .element {
+            border: 1px solid black;
+            /* height: 200px; */
+        }
+
+        .header {
+            grid-area: header;
+            height: 50px;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .aside {
+            grid-area: aside;
+            height: 200px;
+        }
+
+        .footer {
+            grid-area: footer;
+            height: 110px;
+
+        }
+
+        /*
+        Если мы хотим задать размеры для последующих грид элементов,
+        есть свойства: 
+        grid-auto-rows:;
+        grid-auto-columns:;
+        */
+
+        /* 
+        По-умолчанию новые грид элементы появляются внизу:
+        Это происходит потому что свойство grid-auto-flow имеет значение row.
+        Его можно поменять на column и в таком случае новые элементы будут появляться
+        в колонках. 
+        Если установить свойство dense - все пустые ячейки которые могут образоваться при
+        позиционировании грид элементов будут заполняться.
+        */
+
+        /* Есть свойство mimax() */
+
+        /* 
+        Выравнивание контента:
+        justify-content: ; - выравнивание сетки по горизонтали
+        justify-items: ; - выравнивание содержимого ячейки по горизонтали
+        align-content: ; - сетка по вертикали
+        align-items: ; - контент ячейки по вертикали
+        */
+        
+    </style>
+
+</body>
+
+</html>
