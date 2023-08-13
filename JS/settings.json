@@ -1,0 +1,22 @@
+// .json - файл с настройками для Visual Studio Code
+
+{
+    "workbench.colorTheme": "Default Dark+",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "git.autofetch": true,
+    "emmet.preferences": {
+      "output.reverseAttributes": true
+    },
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.showExecutionMessage": false,
+    "liveSassCompile.settings.showOutputWindowOn": "None",
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "~/../css"
+      }
+    ],
+  }
